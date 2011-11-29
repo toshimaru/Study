@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication
 {
-    class Program
+    class PublicKeyEncryption
     {
         static void Main(string[] args)
         {
@@ -56,24 +56,6 @@ namespace ConsoleApplication1
         }
 
         /// <summary>
-        /// 公開鍵を使って文字列を暗号化する
-        /// </summary>
-        /// <param name="str">暗号化する文字列</param>
-        /// <param name="publicKey">暗号化に使用する公開鍵(XML形式)</param>
-        /// <returns>暗号化された文字列</returns>
-        static string Encrypt(string str, RSAParameters publicKey)
-        {
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-
-            rsa.ImportParameters(publicKey);
-
-            byte[] data = Encoding.UTF8.GetBytes(str);
-            byte[] encryptedData = rsa.Encrypt(data, false);
-
-            return Convert.ToBase64String(encryptedData);
-        }
-
-        /// <summary>
         /// 秘密鍵を使って文字列を復号化する
         /// </summary>
         /// <param name="str">Encryptメソッドにより暗号化された文字列</param>
@@ -87,24 +69,6 @@ namespace ConsoleApplication1
 
             byte[] data = Convert.FromBase64String(str);
             byte[] decryptedData = rsa.Decrypt(data, true);
-
-            return Encoding.UTF8.GetString(decryptedData);
-        }
-
-        /// <summary>
-        /// 秘密鍵を使って文字列を復号化する
-        /// </summary>
-        /// <param name="str">Encryptメソッドにより暗号化された文字列</param>
-        /// <param name="privateKey">復号化に必要な秘密鍵(XML形式)</param>
-        /// <returns>復号化された文字列</returns>
-        static string Decrypt(string str, RSAParameters privateKey)
-        {
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-
-            rsa.ImportParameters(privateKey);
-
-            byte[] data = Convert.FromBase64String(str);
-            byte[] decryptedData = rsa.Decrypt(data, false);
 
             return Encoding.UTF8.GetString(decryptedData);
         }
