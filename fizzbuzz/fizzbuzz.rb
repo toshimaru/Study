@@ -1,13 +1,13 @@
 def fizzbuzz(max)
   (1..max).each{|n|
     if (n % 15 == 0)
-      p 'fizzbuzz'
+      puts 'fizzbuzz'
     elsif (n % 5 == 0)
-      p 'buzz'
+      puts 'buzz'
     elsif (n % 3 == 0)
-      p 'fizz'
+      puts 'fizz'
     else
-      p n
+      puts n
     end
   } 
 end
