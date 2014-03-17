@@ -14,3 +14,5 @@ h.instance_var # => constructor instance-var
 h.instvar = 'changed instance-var'
 h.instance_var # => changed instance-var
 puts h.instvar # => changed instance-var
+
+h.call_private

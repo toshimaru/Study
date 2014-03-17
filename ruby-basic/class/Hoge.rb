@@ -1,4 +1,6 @@
 class Hoge
+  attr_accessor :instvar
+
   @@clsvar = 'class-var'
   @instvar = 'instance-var'
 
@@ -26,6 +28,18 @@ class Hoge
     puts @instvar
   end
 
-  attr_accessor :instvar
+  def call_private
+    puts pri
+  end
+
+  private
+
+    def pri
+      'private method ' + private_hello
+    end
+
+    def private_hello
+      'private_hello'
+    end
 
 end
