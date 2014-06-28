@@ -16,6 +16,52 @@ class Tree
     @root = nil
   end
 
+  # search
+  def [](key)
+    node = search(@root, key)
+    if node
+      node.data
+    end
+  end
+
+  # insert
+  def []=(key, value)
+    @root = insert!(@root, key, value)
+    value
+  end
+
+  def delete_key!(key)
+    @root, value = delete!(@root, key)
+    value
+  end
+
+  def min
+    if @root
+      node = search_min(@root)
+      if node
+        [node.key, node.data]
+      end
+    end
+  end
+
+  def max
+    if @root
+      node = search_max(@root)
+      if node
+        [node.key, node.data]
+      end
+    end
+  end
+
+  # 巡回
+  def each(&func)
+    traverse(@root, &func)
+  end
+
+  def inspect
+    sprintf("#<Tree:%#x>", self.object_id)
+  end
+
   private
 
   def search(node, key)
@@ -29,7 +75,7 @@ class Tree
       end
     end
   end
-  
+
   def insert!(node, key, data)
     if node == nil
       return Node.new(key, data)
@@ -38,9 +84,7 @@ class Tree
     elsif key < node.key
       node.left = insert!(node.left, key, data)
     else
-      p node
       node.right = insert!(node.right, key, data)
-      p node
     end
     node
   end
@@ -49,7 +93,7 @@ class Tree
     node = node.left while node.left
     node
   end
-  
+
   def delete_min!(node)
     return node.right unless node.left
     node.left = delete_min!(node.left)
@@ -87,62 +131,9 @@ class Tree
       traverse(node.right, &func)
     end
   end
-
-  public
-
-  # search
-  def [](key)
-    node = search(@root, key)
-    if node
-      node.data
-    end
-  end
-  
-  # insert
-  def []=(key, value)
-    @root = insert!(@root, key, value)
-    value
-  end
-  
-  def delete_key!(key)
-    @root, value = delete!(@root, key)
-    value
-  end
-  
-  def min
-    if @root
-      node = search_min(@root)
-      if node
-        [node.key, node.data]
-      end
-    end
-  end
-  
-  def max
-    if @root
-      node = search_max(@root)
-      if node
-        [node.key, node.data]
-      end
-    end
-  end
-  
-  # 巡回
-  def each(&func)
-    traverse(@root, &func)
-  end
-
-  def inspect
-    sprintf("#<Tree:%#x>", self.object_id)
-  end
-
 end
 
 t = Tree.new
-
-# p t[1] = 'hoge'
-# p t[2] = 'fuga'
-# p t[1.5] = 'foo'
 
 10.times { |x|
   key = rand
@@ -152,12 +143,3 @@ t = Tree.new
 t.each { |k, v|
   print k, ' ', v, "\n"
 }
-
-# print t[100]
-# t[100] = 10
-# print t[100]
-
-# t.each { |k, v|
-#   print k, ' ', v, "\n"
-# }
-

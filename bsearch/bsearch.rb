@@ -8,7 +8,7 @@ def bsearch(x, buff)
   high = buff.size - 1
   while low <= high
     mid = (low + high) / 2
-    if x == buff[mid] 
+    if x == buff[mid]
       return true
     elsif x > buff[mid]
       low = mid + 1
@@ -20,9 +20,7 @@ def bsearch(x, buff)
 end
 
 # test
-if __FILE__ == $0
-  a = (1 ... 5).to_a
-  for x in [0, 1, 2.5, 3, 4, 5]
-    print x, " ", bsearch(x, a), "\n"
-  end
+a = (1 ... 5).to_a
+for x in [0, 1, 2.5, 3, 4, 5]
+  print x, " ", bsearch(x, a), "\n"
 end
