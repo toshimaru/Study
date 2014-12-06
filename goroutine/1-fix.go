@@ -7,8 +7,8 @@ import (
 
 func main() {
 	var wg sync.WaitGroup
+	wg.Add(1)
 	go func() {
-		wg.Add(1)
 		log.Println("1")
 		wg.Done()
 	}()
