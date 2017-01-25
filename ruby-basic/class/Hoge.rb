@@ -20,7 +20,7 @@ class Hoge
     puts str
   end
 
-  def clsvar
+  def class_var
     puts @@clsvar
   end
 
@@ -30,6 +30,10 @@ class Hoge
 
   def call_private
     puts pri
+  end
+
+  class << self
+    attr_accessor :clsvar
   end
 
   private
