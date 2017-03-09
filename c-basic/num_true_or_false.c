@@ -15,4 +15,12 @@ int main(int argc, char const* argv[])
   } else {
     printf("1 is false");
   }
+  
+  printf("\n");
+  
+  if (2) {
+    printf("2 is true");
+  } else {
+    printf("2 is false");
+  }
 }
