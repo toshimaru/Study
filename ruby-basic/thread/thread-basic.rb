@@ -11,4 +11,3 @@ thread = Thread.new do
     puts n
   end
 end
-
