@@ -29,7 +29,7 @@ class Hoge
   end
 
   def call_private
-    puts pri
+    pri
   end
 
   class << self
@@ -39,11 +39,7 @@ class Hoge
   private
 
     def pri
-      'private method ' + private_hello
-    end
-
-    def private_hello
-      'private_hello'
+      puts 'private method'
     end
 
 end
