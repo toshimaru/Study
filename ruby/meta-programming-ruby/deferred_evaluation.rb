@@ -1,0 +1,3 @@
+inc = ->(x) { x + 1 }
+# ...other code...
+puts inc.call(2)
