@@ -1,0 +1,1 @@
+Study programming and algorithm.
