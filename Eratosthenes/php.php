@@ -1,7 +1,7 @@
 <?php
 
 function era($n) {
-    $primes = array();
+    $primes = [];
     foreach (range(2, $n) as $i) {
         $primes[$i] = true;
     }
@@ -14,13 +14,14 @@ function era($n) {
         }    
     }
 
-    $p = array();
-    foreach ($primes as $prime => $isPrime) {
-        if ($isPrime) {
-            $p[] = $prime;
-        }
-    }
-    return $p;
+    return array_keys(array_filter($primes, function($v) { return $v; }));
+    // $p = [];
+    // foreach ($primes as $prime => $isPrime) {
+    //     if ($isPrime) {
+    //         $p[] = $prime;
+    //     }
+    // }
+    // return $p;
 }
 
 print_r(era(100));

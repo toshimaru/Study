@@ -16,4 +16,3 @@ def getVv (m)
 end
 
 puts getVv(distance).to_s.rjust(2, '0')
-
