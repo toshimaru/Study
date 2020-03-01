@@ -1,18 +1,19 @@
-
-def bubble_sort(ary)
-  n = ary.length - 1
-  (0...n).each { |i|
-    (0...n-i).each { |j| 
-      ary[j], ary[j + 1] = ary[j + 1], ary[j] if ary[j] > ary[j + 1]
-    }
-  } 
+def bubble_sort1(ary)
+  len = ary.length - 1
+  (0...len).each do |i|
+    (0...len-i).each do |j|
+      if ary[j] > ary[j + 1]
+        ary[j], ary[j + 1] = ary[j + 1], ary[j] 
+      end
+    end
+  end
   ary
 end
 
-def bubblesort(ary)
-  l = ary.length - 1
-  l.times do |x|
-    (l-x).times do |y|
+def bubble_sort2(ary)
+  len = ary.length - 1
+  len.times do |x|
+    (len - x).times do |y|
       if ary[y] > ary[y + 1]
         ary[y], ary[y + 1] = ary[y + 1], ary[y]
       end
@@ -21,8 +22,7 @@ def bubblesort(ary)
   ary
 end
 
-
-array = [4, 3, 2, 1, 0]
-p bubble_sort(array)
-p bubblesort(array)
-
+array = Array.new(10) { rand(10) }
+p array
+p bubble_sort1(array)
+p bubble_sort2(array)
