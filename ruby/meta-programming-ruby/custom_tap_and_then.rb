@@ -13,7 +13,7 @@ end
 # tap
 p ['a','b','c'].push("x").tap {|x| p x }.map &:upcase
 
-# then
+# then v.s. tap
 p ['a','b','c'].push("x").then {|x| x.reverse }.map &:upcase
 p ['a','b','c'].push("x").tap {|x| x.reverse }.map &:upcase
 
