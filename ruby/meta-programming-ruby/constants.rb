@@ -1,9 +1,8 @@
 Y = "root constants"
 module M
   Y = "constants"
-  Y
-  ::Y
+  p Y
+  p ::Y
 end
 
-# > M.constants
-# => [:Y]
+p M.constants # => [:Y]
