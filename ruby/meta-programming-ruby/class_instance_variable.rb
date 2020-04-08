@@ -1,5 +1,6 @@
 class MyClass
   @my_var = 1
+  p "my_var is #{@my_var}"
 
   def self.read
     @my_var
@@ -19,3 +20,12 @@ p obj.read
 obj.write
 p obj.read
 p MyClass.read
+
+class Hoge < MyClass
+end
+p Hoge.read
+
+class Hoge2 < MyClass
+  @my_var = 100
+end
+p Hoge2.read
