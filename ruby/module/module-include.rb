@@ -14,23 +14,16 @@ module B
   end
 end
 
-module C
-  def c
-    puts 3
-  end
-end
-
 module A
   include B
 end
 
-A.send :include, B
-A.include(B) # since Ruby 2.0 include is public method
+A.include(B) # since Ruby 2.0, `include` is public method
 
 class Y
   include A
 end
 
 X.new.a
-X.new.b # Error!!
+# X.new.b # => undefined method `b'
 Y.new.b
