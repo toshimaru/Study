@@ -5,6 +5,7 @@ fork do
 end
 
 fork do
+  # CoW works!
   ary << 4
   p ary
 end

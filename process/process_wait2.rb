@@ -1,5 +1,5 @@
 puts "1"
-5.times do
+10.times do
   puts "first loop"
   fork do
     if rand(5).even?
@@ -12,7 +12,7 @@ end
 
 puts "2"
 
-5.times do
+10.times do
   puts "second loop"
   pid, status = Process.wait2
 
