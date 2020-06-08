@@ -12,6 +12,8 @@ trap(:CHLD) do
   puts "child_processes trap"
   puts Process.wait
   dead_processes += 1
+
+  # sometimes exit doesn't work
   exit if dead_processes == child_processes
 end
 
