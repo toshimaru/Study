@@ -21,3 +21,11 @@ loop do
   puts "loop"
   sleep 1
 end
+
+# Check Process counter
+# loop do
+  # puts "#{dead_processes} == #{child_processes}"
+  # exit if dead_processes == child_processes
+  # puts "loop"
+  # sleep 1
+# end
