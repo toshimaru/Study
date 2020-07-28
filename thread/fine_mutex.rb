@@ -5,7 +5,7 @@ mutex = Mutex.new
 threads = []
 results = []
 
-10.times do
+100.times do
   threads << Thread.new do
     response = Net::HTTP.get_response('dynamic.xkcd.com', '/random/comic')
     random_comic_url = response['Location']
