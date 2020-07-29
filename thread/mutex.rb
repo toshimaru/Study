@@ -1,4 +1,3 @@
-
 mutex = Mutex.new
 results = []
 
