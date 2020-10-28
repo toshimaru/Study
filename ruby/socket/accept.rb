@@ -6,4 +6,4 @@ server.bind(addr)
 server.listen(Socket::SOMAXCONN)
 
 connection, _ = server.accept
-
+p connection

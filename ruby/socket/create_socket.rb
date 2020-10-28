@@ -7,3 +7,4 @@ p Socket::SOCK_STREAM
 p :INET6
 p :STREAM
 socket = Socket.new(:INET6, :STREAM)
+p socket
