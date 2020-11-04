@@ -9,4 +9,4 @@ end
 # Server reads "gekko"
 #
 # $ tailf /var/log/system.log | nc localhost 4481
-# Server can't finish readingd
+# Server can't finish reading
