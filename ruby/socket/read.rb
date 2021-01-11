@@ -1,10 +1,13 @@
 require 'socket'
 
 Socket.tcp_server_loop(4481) do |connection|
-  puts connection.read
+  connection.puts connection.read
   connection.close
 end
 
+# read one line
+# connection.puts connection.gets
+#
 # $ echo gekko | nc localhost 4481
 # Server reads "gekko"
 #
