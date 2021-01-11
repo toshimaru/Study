@@ -31,7 +31,7 @@ module FTP
       when 'PWD'
         "257 <#{pwd}> is the current directory"
       when 'PORT'
-        ports = options.split(',')
+        parts = options.split(',')
         ip_address = parts[0..3].join('.')
         port = Integer(parts[4]) * 256 + Integer(parts[5])
 
@@ -48,7 +48,7 @@ module FTP
         result = Dir.entries(pwd).join(CRLF)
         @data_socket.write(result)
         @data_socket.close
-        
+
         "226 Closing data connection, sent #{result.size} bytes"
       when 'QUIT'
         "221 Ciao"
