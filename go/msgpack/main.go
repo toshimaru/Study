@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/syndtr/goleveldb/leveldb"
 	"gopkg.in/vmihailenco/msgpack.v2"
 )
@@ -12,14 +13,13 @@ func main() {
 	var x interface{}
 	err := msgpack.Unmarshal([]byte(nil), &x)
 	if err != nil {
-		panic("xx error!")
+		panic("x error!")
 	}
-
-	db, err := leveldb.OpenFile("/Users/toshimaru/Downloads/bid_condition/idfa_bid_condition/bid_condition", nil)
+	db, err := leveldb.OpenFile("/Users/toshimaru/Downloads/leveldb", nil)
 	if err != nil {
 		panic("1 error!")
 	}
-	b, err := db.Get([]byte("idfa_targeting:15169"), nil)
+	b, err := db.Get([]byte("id"), nil)
 	if err != nil {
 		panic("2 error!")
 	}
@@ -30,5 +30,4 @@ func main() {
 	}
 	fmt.Println("--- success ---")
 	fmt.Println(out)
-
 }
