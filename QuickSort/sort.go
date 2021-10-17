@@ -18,15 +18,13 @@ func qsort(ary []int) []int {
 	if len(ary) == 0 {
 		return ary
 	}
-
-	pivot := ary[0]
-	ary = ary[1:]
+	pivot, ary := ary[0], ary[1:]
 	lesser, greater := lesserAndGreater(ary, pivot)
-	return append(append(qsort(lesser), pivot), qsort(greater)...)
+	lesser, greater = qsort(lesser), qsort(greater)
+	return append(append(lesser, pivot), greater...)
 }
 
-func lesserAndGreater(ary []int, pivot int) ([]int, []int) {
-	var lesser, greater []int
+func lesserAndGreater(ary []int, pivot int) (lesser []int, greater []int) {
 	for i, v := range ary {
 		if ary[i] > pivot {
 			greater = append(greater, v)
