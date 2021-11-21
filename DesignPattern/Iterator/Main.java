@@ -1,13 +1,16 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Main {
   public static void main(String[] args) {
     BookShelf bookShelf = new BookShelf(4);
-    bookShelf.appendBook(new Book("Around the World in 80 days"));
+    bookShelf.appendBook(new Book("Around the World in 80 Days"));
     bookShelf.appendBook(new Book("Bible"));
-    bookShelf.appendBook(new Book("Cinderlla"));
+    bookShelf.appendBook(new Book("Cinderella"));
     bookShelf.appendBook(new Book("Daddy-Long-Legs"));
+    bookShelf.appendBook(new Book("East of Eden"));
 
     // 明示的な Iterator
     Iterator<Book> it = bookShelf.iterator();
@@ -38,24 +41,23 @@ public class Book {
 }
 
 public class BookShelf implements Iterable<Book> {
-  private Book[] books;
+  private List<Book> books;
   private int last = 0;
 
-  public BookShelf(int maxsize) {
-    this.books = new Book[maxsize];
+  public BookShelf(int initialsize) {
+    this.books = new ArrayList<Book>(initialsize);
   }
 
   public Book getBookAt(int index) {
-    return books[index];
+    return books.get(index);
   }
 
   public void appendBook(Book book) {
-    this.books[last] = book;
-    last++;
+    books.add(book);
   }
 
   public int getLength() {
-    return last;
+    return books.size();
   }
 
   public Iterator<Book> iterator() {
