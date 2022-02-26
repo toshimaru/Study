@@ -1,26 +1,21 @@
-#
-# binary search
-# ref. http://www.geocities.jp/m_hiroi/light/ruby02.html
-#
-
-def bsearch(x, buff)
-  low = 0
-  high = buff.size - 1
-  while low <= high
-    mid = (low + high) / 2
-    if x == buff[mid]
+def bsearch(ary, target)
+  head = 0
+  tail = ary.size - 1
+  while head <= tail
+    mid = (head + tail) / 2
+    if target == ary[mid]
       return true
-    elsif x > buff[mid]
-      low = mid + 1
+    elsif target > ary[mid]
+      head = mid + 1
     else
-      high = mid - 1
+      tail = mid - 1
     end
   end
   false
 end
 
 # test
-a = (1 ... 5).to_a
-for x in [0, 1, 2.5, 3, 4, 5]
-  print x, " ", bsearch(x, a), "\n"
+ary = (1..4).to_a
+[0, 1, 2.5, 3, 4, 5].each do |target|
+  puts "#{target} #{bsearch(ary, target)}"
 end
