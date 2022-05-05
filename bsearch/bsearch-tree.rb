@@ -1,7 +1,6 @@
 # ref. http://www.geocities.jp/m_hiroi/light/abcruby13.html
 
 class Tree
-
   class Node
     def initialize(key, data)
       @key = key
