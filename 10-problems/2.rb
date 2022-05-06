@@ -1,4 +1,4 @@
-def valid?(s1, s2)
+def valid_anagram?(s1, s2)
   h1 = Hash.new { |h, k| h[k] = 0 }
   h2 = Hash.new { |h, k| h[k] = 0 }
 
@@ -8,6 +8,25 @@ def valid?(s1, s2)
   h1 == h2
 end
 
-p valid?("abc", "cba")
-p valid?("abc", "cda")
-p valid?("hello world", "wdlrol lohe")
+def valid_anagram2?(s1, s2)
+  s1.chars.sort == s2.chars.sort
+end
+
+p valid_anagram?("abc", "cba")
+p valid_anagram?("abc", "cda")
+p valid_anagram?("hello world", "wdlrol lohe")
+
+p valid_anagram2?("abc", "cba")
+p valid_anagram2?("abc", "cda")
+p valid_anagram2?("hello world", "wdlrol lohe")
+
+require 'benchmark/ips'
+Benchmark.ips do |x|
+  x.report("valid_anagram") {
+    valid_anagram?("hello world", "wdlrol lohe")
+  }
+  x.report("valid_anagram2") {
+    valid_anagram2?("hello world", "wdlrol lohe")
+  }
+  x.compare!
+end
