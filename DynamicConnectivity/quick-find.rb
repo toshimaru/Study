@@ -33,4 +33,3 @@ qf.union(5, 3)
 p qf.ids
 qf.union(5, 0)
 p qf.ids
-
