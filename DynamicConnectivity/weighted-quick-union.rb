@@ -53,3 +53,8 @@ qf.union(5, 0)
 p qf.ids
 p qf.connected?(3,0)
 p qf.connected?(3,8)
+
+qf.union(9, 2)
+p qf.ids
+qf.union(9, 0)
+p qf.ids
