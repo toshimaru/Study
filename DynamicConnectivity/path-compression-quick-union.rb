@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 =begin
-weighted-quick-union
+weighted-quick-union with Path Compression
 
 quick-union Cost
 - initialize: N
@@ -9,7 +9,7 @@ quick-union Cost
 - find: Log N
 =end
 
-class WeightedQuickUnion
+class PathCompressionQuickUnion
   attr_reader :ids, :size
 
   def initialize(n)
@@ -38,12 +38,15 @@ class WeightedQuickUnion
   private
 
   def root(i)
-    i = ids[i] while i != ids[i]
+    while i != ids[i]
+      ids[i] = ids[ids[i]]
+      i = ids[i]
+    end
     i
   end
 end
 
-qf = WeightedQuickUnion.new(10)
+qf = PathCompressionQuickUnion.new(10)
 p qf.ids
 qf.union(3, 8)
 p qf.ids
