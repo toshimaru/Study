@@ -47,7 +47,7 @@ class SinglyLinkedList
     popped_val
   end
 
-  alias remove pop
+  alias_method :remove, :pop
 end
 
 ### Test ###
