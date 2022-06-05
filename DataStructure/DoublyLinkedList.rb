@@ -9,7 +9,7 @@ class Node
 
   # for debug
   def inspect
-    { value:, prev: @prev.value, next: @next.value}
+    { value:, prev: @prev.value, next: @next.value }
   end
 end
 
@@ -22,7 +22,7 @@ class DoublyLinkedList
     @dummy.prev = @dummy
     @size = 0
   end
-  
+
   def get_node(index)
     if index < size / 2
       index.times.inject(dummy.next) { |node| node.next }
@@ -30,15 +30,15 @@ class DoublyLinkedList
       (size - index).times.inject(dummy) { |node| node.prev }
     end
   end
-  
+
   def get(index)
-    raise ArgumentError.new("index out of range") if (index < 0 || index > size - 1)
+    raise ArgumentError.new('index out of range') if index < 0 || index > size - 1
 
     get_node(index).value
   end
 
   def set(index, value)
-    raise ArgumentError.new("index out of range") if (index < 0 || index > size - 1)
+    raise ArgumentError.new('index out of range') if index < 0 || index > size - 1
 
     node = get_node(index)
     original_value = node.value
@@ -61,7 +61,7 @@ class DoublyLinkedList
   end
 
   def remove(index)
-    raise ArgumentError.new("index out of range") if (index < 0 || index > size - 1)
+    raise ArgumentError.new('index out of range') if index < 0 || index > size - 1
 
     node = get_node(index)
     remove_node(node)

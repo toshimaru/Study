@@ -1,4 +1,3 @@
-
 class Node
   attr_accessor :next
   attr_reader :value
@@ -39,7 +38,8 @@ class SinglyLinkedList
   end
 
   def pop
-    return if (@size == 0)
+    return if @size == 0
+
     popped_val = head.value
     @head = head.next
     @size -= 1
