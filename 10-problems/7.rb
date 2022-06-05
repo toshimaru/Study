@@ -70,7 +70,6 @@ p slow_gas_station(gas, cost)
 p my_gas_station(gas, cost)
 p gas_station(gas, cost)
 
-
 gas  = [1,1,1,10]
 cost = [2,2,2,2]
 p slow_gas_station(gas, cost)
