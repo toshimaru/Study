@@ -23,24 +23,24 @@ class DoublyLinkedList
     @size = 0
   end
   
-  def get_node(i)
-    if i < size / 2
-      i.times.inject(dummy.next) { |node| node.next }
+  def get_node(index)
+    if index < size / 2
+      index.times.inject(dummy.next) { |node| node.next }
     else
-      (size - i).times.inject(dummy) { |node| node.prev }
+      (size - index).times.inject(dummy) { |node| node.prev }
     end
   end
   
-  def get(i)
-    raise ArgumentError.new("index out of range") if (i < 0 || i > size - 1)
+  def get(index)
+    raise ArgumentError.new("index out of range") if (index < 0 || index > size - 1)
 
-    get_node(i).value
+    get_node(index).value
   end
 
-  def set(i, value)
-    raise ArgumentError.new("index out of range") if (i < 0 || i > size - 1)
+  def set(index, value)
+    raise ArgumentError.new("index out of range") if (index < 0 || index > size - 1)
 
-    node = get_node(i)
+    node = get_node(index)
     original_value = node.value
     node.value = value
     original_value
@@ -56,14 +56,14 @@ class DoublyLinkedList
     new_node
   end
 
-  def add(i, value)
-    add_before(get_node(i), value)
+  def add(index, value)
+    add_before(get_node(index), value)
   end
 
-  def remove(i)
-    raise ArgumentError.new("index out of range") if (i < 0 || i > size - 1)
+  def remove(index)
+    raise ArgumentError.new("index out of range") if (index < 0 || index > size - 1)
 
-    node = get_node(i)
+    node = get_node(index)
     remove_node(node)
     node.value
   end
@@ -85,9 +85,14 @@ p list.get(0)
 p list.get(1)
 p list.get(2)
 p list.get(3)
+puts
 
 list.set 1, 12
+p list.get(0)
 p list.get(1)
+p list.get(2)
+p list.get(3)
+puts
 
 list.remove 1
 p list.get(0)
