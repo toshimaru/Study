@@ -25,21 +25,11 @@ class DoublyLinkedList
   end
   
   def get_node(i)
-    # TODO: i > n / 2
     if i < size / 2
-      node = dummy.next
-      i.times do
-        node = node.next
-      end
+      i.times.inject(dummy.next) { |node| node.next }
     else
-      node = dummy
-      j = size
-      while j > i
-        node = node.prev
-        j -= 1
-      end
+      (size - i).times.inject(dummy) { |node| node.prev }
     end
-    node
   end
   
   def get(i)
@@ -73,6 +63,7 @@ list = DoublyLinkedList.new
 list.add 0, 10
 list.add 1, 20
 list.add 2, 30
+list.add 1, 11
 p list.get(0)
 p list.get(1)
 p list.get(2)
