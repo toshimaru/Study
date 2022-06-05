@@ -1,6 +1,5 @@
 class Node
-  attr_reader :value
-  attr_accessor :prev, :next
+  attr_accessor :prev, :next, :value
 
   def initialize(value)
     @value = value
@@ -33,21 +32,28 @@ class DoublyLinkedList
   end
   
   def get(i)
+    raise ArgumentError.new("index out of range") if (i < 0 || i > size - 1)
+
     get_node(i).value
   end
 
   def set(i, value)
-    # TODO
+    raise ArgumentError.new("index out of range") if (i < 0 || i > size - 1)
+
+    node = get_node(i)
+    original_value = node.value
+    node.value = value
+    original_value
   end
 
   def add_before(node, value)
-    n = Node.new(value)
-    n.prev = node.prev
-    n.next = node
-    n.next.prev = n
-    n.prev.next = n
+    new_node = Node.new(value)
+    new_node.prev = node.prev
+    new_node.next = node
+    new_node.next.prev = new_node
+    new_node.prev.next = new_node
     @size += 1
-    n
+    new_node
   end
 
   def add(i, value)
@@ -55,11 +61,22 @@ class DoublyLinkedList
   end
 
   def remove(i)
-    # TODO
+    raise ArgumentError.new("index out of range") if (i < 0 || i > size - 1)
+
+    node = get_node(i)
+    remove_node(node)
+    node.value
+  end
+
+  def remove_node(node)
+    node.prev.next = node.next
+    node.next.prev = node.prev
+    @size -= 1
   end
 end
 
 list = DoublyLinkedList.new
+
 list.add 0, 10
 list.add 1, 20
 list.add 2, 30
@@ -68,4 +85,11 @@ p list.get(0)
 p list.get(1)
 p list.get(2)
 p list.get(3)
-p list.get(4)
+
+list.set 1, 12
+p list.get(1)
+
+list.remove 1
+p list.get(0)
+p list.get(1)
+p list.get(2)
