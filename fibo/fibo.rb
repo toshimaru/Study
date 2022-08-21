@@ -3,18 +3,20 @@ def fibo(n)
   fibo(n-2) + fibo(n-1)
 end
 
-def fibo2(n)
-  result, a, b = 0, 0, 1
+def fibonacci(n)
+  a, b = 0, 1
   n.times do
-    result = a
     a, b = b, a + b
-    puts result
   end
-  puts result
+  a
 end
 
-10.times { |i|
-  puts fibo(i)
-}
+def fibonacci_array(n)
+  (2...n).inject([0, 1]) { |ary, i|
+    ary << (ary[i - 2] + ary[i - 1])
+  }
+end
 
-fibo2(10)
+p fibonacci_array(11)
+puts fibo(10)
+puts fibonacci(10)
