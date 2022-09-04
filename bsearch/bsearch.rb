@@ -1,3 +1,6 @@
+# @param ary: array of integers
+# @param target: integer
+# @return boolean
 def bsearch(ary, target)
   head = 0
   tail = ary.size - 1
@@ -17,5 +20,5 @@ end
 # test
 ary = (1..4).to_a
 [0, 1, 2.5, 3, 4, 5].each do |target|
-  puts "#{target} #{bsearch(ary, target)}"
+  puts "ary: #{ary}, target: #{target}, result: #{bsearch(ary, target)}"
 end
