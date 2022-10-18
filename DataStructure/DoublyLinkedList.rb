@@ -1,3 +1,5 @@
+# Reference
+# https://opendatastructures.org/ods-java/3_2_DLList_Doubly_Linked_Li.html
 class Node
   attr_accessor :prev, :next, :value
 

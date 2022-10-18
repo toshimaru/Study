@@ -1,3 +1,5 @@
+# Reference
+# https://opendatastructures.org/ods-java/3_1_SLList_Singly_Linked_Li.html
 class Node
   attr_accessor :next
   attr_reader :value
