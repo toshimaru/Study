@@ -17,4 +17,3 @@ const asyncFunc = async() => {
     console.log('=== after Promise in async in async ===')
 }
 asyncFunc()
-
