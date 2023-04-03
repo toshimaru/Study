@@ -1,4 +1,4 @@
-async function resolveAfter10Seconds() {
+function resolveAfter10Seconds() {
     return new Promise(resolve => {
         setTimeout(() => {
             console.log('resolveAfter10Seconds')
@@ -7,13 +7,14 @@ async function resolveAfter10Seconds() {
     })
 }
 
-console.log('before Promise')
+console.log('=== before Promise ===')
 resolveAfter10Seconds()
-console.log('after Promise')
+console.log('=== after Promise ===')
 
-asyncFunc = async () => {
-    console.log('before Promise')
+const asyncFunc = async() => {
+    console.log('=== before Promise in async ===')
     await resolveAfter10Seconds()
-    console.log('after Promise')
+    console.log('=== after Promise in async in async ===')
 }
 asyncFunc()
+
