@@ -7,4 +7,3 @@ const binaries = [
 ];
 const result = binaries.map(binary => String.fromCharCode(binary)).join('');
 console.log(result);
-

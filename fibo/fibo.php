@@ -6,4 +6,3 @@ function fibo($n) {
 }
 
 echo fibo(30);
-
