@@ -3,6 +3,4 @@ def fibo(n)
   fibo(n-1) + fibo(n-2)
 end
 
-puts fibo(5)
-puts '========'
-puts fibonacci(5)
+puts fibo(10)
