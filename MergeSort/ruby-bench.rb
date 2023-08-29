@@ -1,4 +1,4 @@
-# Big O time: O(n log n)
+### Sort1 ###
 
 def merge_sort1(ary)
     merge_sort(ary, 0, ary.length - 1)
@@ -42,6 +42,8 @@ def merge(ary, start, mid, _end)
     end
 end
 
+### Sort2 ###
+
 def merge_sort2(ary)
   return ary if ary.size <= 1
 
@@ -75,6 +77,8 @@ def merge2(ary1, ary2)
   merged_ary
 end
 
+### Benchmarking ###
+
 require 'benchmark/ips'
 
 Benchmark.ips do |x|
@@ -85,3 +89,17 @@ Benchmark.ips do |x|
     # x.report("Array#sort") { ARY.sort }
     x.compare!
 end
+
+=begin
+❯ ruby ruby-bench.rb
+Warming up --------------------------------------
+         merge_sort1   225.000  i/100ms
+         merge_sort2   283.000  i/100ms
+Calculating -------------------------------------
+         merge_sort1      2.356k (± 1.5%) i/s -     11.925k in   5.062369s
+         merge_sort2      2.840k (± 1.4%) i/s -     14.433k in   5.083328s
+
+Comparison:
+         merge_sort2:     2839.9 i/s
+         merge_sort1:     2356.2 i/s - 1.21x  slower
+=end
