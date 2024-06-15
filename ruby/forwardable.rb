@@ -1,13 +1,8 @@
 require 'forwardable'
 
 class A
-  def hello
-    puts "hello"
-  end
-  
-  def hi(str)
-    puts str
-  end
+  def hello = puts "hello"
+  def hi(str) = puts str
 end
 
 class B
