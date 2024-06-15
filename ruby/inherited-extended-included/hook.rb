@@ -29,6 +29,10 @@ end
 class ChildClass < ParentClass
 end
 
+# superclass must be an instance of Class (given an instance of Module) (TypeError)
+# class ChildClass2 < ParentModule
+# end
+
 class IncludeClass
   include ParentModule
   extend ParentModule
