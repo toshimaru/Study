@@ -1,5 +1,4 @@
 # ref. http://www.geocities.jp/m_hiroi/light/abcruby13.html
-
 class Tree
   class Node
     def initialize(key, data)
@@ -53,8 +52,8 @@ class Tree
   end
 
   # 巡回
-  def each(&func)
-    traverse(@root, &func)
+  def each(&)
+    traverse(@root, &)
   end
 
   def inspect
@@ -76,9 +75,9 @@ class Tree
   end
 
   def insert!(node, key, data)
-    if node == nil
-      return Node.new(key, data)
-    elsif key == node.key
+    return Node.new(key, data) if node == nil
+
+    if key == node.key
       node.data = data
     elsif key < node.key
       node.left = insert!(node.left, key, data)
@@ -120,25 +119,23 @@ class Tree
         node.right, data = delete!(node.right, key)
       end
     end
-    return node, data
+    [node, data]
   end
 
-  def traverse(node, &func)
+  def traverse(node, &block)
     if node
-      traverse(node.left, &func)
-      func.call(node.key, node.data)
-      traverse(node.right, &func)
+      traverse(node.left, &block)
+      block.call(node.key, node.data)
+      traverse(node.right, &block)
     end
   end
 end
 
+# Generate Tree
 t = Tree.new
-
 10.times { |x|
   key = rand
   t[key] = x
 }
-
-t.each { |k, v|
-  print k, ' ', v, "\n"
-}
+# Show tree
+t.each { |k, v| puts "#{k} #{v}" }
