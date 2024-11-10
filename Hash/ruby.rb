@@ -10,7 +10,7 @@ class HashMap
   end
 
   def hash(key)
-    key.each_byte.sum % @capacity
+    key.hash % @capacity
   end
 
   def get(key)
