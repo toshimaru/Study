@@ -23,11 +23,8 @@ def search(root, target)
 end
 
 def min_value_node(root)
-  curr = root
-  while curr.left
-    curr = curr.left
-  end
-  curr
+  root = root.left while root.left
+  root
 end
 
 def remove(root, val)
@@ -38,15 +35,12 @@ def remove(root, val)
   elsif val < root.val
     root.left = remove(root.left, val)
   else
-    if root.left.nil?
-      return root.right
-    elsif root.right.nil?
-      return root.left
-    else
-      min_node = min_value_node(root.right)
-      root.val = min_node.val
-      root.right = remove(root.right, min_node.val)
-    end
+    return root.right if root.left.nil?
+    return root.left if root.right.nil?
+
+    min_node = min_value_node(root.right)
+    root.val = min_node.val
+    root.right = remove(root.right, min_node.val)
   end
   root
 end
