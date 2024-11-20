@@ -44,3 +44,27 @@ def remove(root, val)
   end
   root
 end
+
+def inorder(root)
+  return if root.nil?
+
+  inorder(root.left)
+  puts root.val
+  inorder(root.right)
+end
+
+def preorder(root)
+  return if root.nil?
+
+  puts root.val
+  preorder(root.left)
+  preorder(root.right)
+end
+
+def postorder(root)
+  return if root.nil?
+
+  postorder(root.left)
+  postorder(root.right)
+  puts root.val
+end
