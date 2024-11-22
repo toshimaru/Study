@@ -68,3 +68,20 @@ def postorder(root)
   postorder(root.right)
   puts root.val
 end
+
+def bfs(root)
+  queue = []
+  queue << root if root
+
+  level = 0
+  while queue.any?
+    puts "level: #{level}"
+    queue.size.times do
+      curr = queue.shift
+      puts curr.val
+      queue << curr.left  if curr.left
+      queue << curr.right if curr.right
+    end
+    level += 1
+  end
+end
