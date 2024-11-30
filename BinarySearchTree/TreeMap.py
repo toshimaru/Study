@@ -45,12 +45,8 @@ class TreeMap:
         return -1
 
     def getMin(self) -> int:
-        curr = self.root
-        if not curr:
-            return -1
-        while curr.left:
-            curr = curr.left
-        return curr.val
+        curr = self.findMin(self.root)
+        return curr.val if curr else -1
 
     def getMax(self) -> int:
         curr = self.root
@@ -84,10 +80,9 @@ class TreeMap:
         return curr
 
     def findMin(self, node):
-        curr = node
-        while curr.left:
-            curr = curr.left
-        return curr
+        while node and node.left:
+            node = node.left
+        return node
 
     def getInorderKeys(self) -> List[int]:
         result = []
