@@ -4,7 +4,7 @@ require_relative '../command_handler'
 module FTP
   class ProcessPerConnection
     CRLF = "\r\n"
-    
+
     def initialize(port = 21)
       @control_socket = TCPServer.new(port)
       trap(:INT) { exit }
@@ -24,6 +24,7 @@ module FTP
       loop do
         @client = @control_socket.accept
 
+        # Create process for each connection
         pid = fork do
           respond "220 OHAI"
           handler = CommandHandler.new(self)

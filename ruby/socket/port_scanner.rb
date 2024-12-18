@@ -1,7 +1,7 @@
 require 'socket'
 
 PORT_RANGE = 1..128
-HOST = 'archive.org'
+HOST = 'example.com'
 TIME_TO_WAIT = 5
 
 sockets = PORT_RANGE.map do |port|
