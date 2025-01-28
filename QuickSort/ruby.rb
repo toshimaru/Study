@@ -39,8 +39,8 @@ end
 
 require 'benchmark/ips'
 Benchmark.ips do |x|
-  ary1 = Array.new(1000) { rand(100) }
-  ary2 = Array.new(3) { rand(100) }
+  ary1 = Array.new(10_000) { rand(10_000) }
+  ary2 = Array.new(3) { rand(10000) }
   ary3 = (1..300).to_a.reverse
   x.report("qsort1") {
     qsort1(ary1)
