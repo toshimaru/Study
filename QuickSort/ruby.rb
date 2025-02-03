@@ -29,6 +29,24 @@ def qsort4(ary)
   qsort4(lesser) + [pivot] + qsort4(greater)
 end
 
+def qsort5(ary)
+  return ary if ary.length <= 1
+  pivot = ary.delete_at(rand(ary.length))
+  lesser, greater = [], []
+  ary.each { |i| i < pivot ? lesser << i : greater << i }
+  qsort5(lesser) + [pivot] + qsort5(greater)
+end
+
+def qsort6(ary)
+  return ary if ary.length <= 1
+  pivot = ary.delete_at(rand(ary.length))
+  lesser, greater = [], []
+  while i = ary.pop do
+    i < pivot ? lesser << i : greater << i
+  end
+  qsort6(lesser) + [pivot] + qsort6(greater)
+end
+
 # ary = Array.new(30) { rand(100) }
 # ary1, ary2, ary3 = ary.dup, ary.dup, ary.dup
 # p "original: #{ary}"
@@ -36,6 +54,8 @@ end
 # p qsort2(ary1)
 # p qsort3(ary2)
 # p qsort4(ary3)
+# p qsort5(ary)
+# p qsort6(ary2)
 
 require 'benchmark/ips'
 Benchmark.ips do |x|
@@ -61,6 +81,16 @@ Benchmark.ips do |x|
     qsort4(ary1)
     qsort4(ary2)
     qsort4(ary3)
+  }
+  x.report("qsort5") {
+    qsort5(ary1)
+    qsort5(ary2)
+    qsort5(ary3)
+  }
+  x.report("qsort6") {
+    qsort6(ary1)
+    qsort6(ary2)
+    qsort6(ary3)
   }
   x.compare!
 end
